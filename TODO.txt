@@ -1,0 +1,7 @@
+Wed Aug  4 11:39:30 EST 2010
+ - *think* i can use child_key and parent_key instead of incoming_prop and storage_names
+   - might have to encode the '/'s though
+
+Sat Aug 21 13:51:03 EST 2010
+ - actually generate the DataMapper resource declarations from the schemas of
+   the Freebase types.

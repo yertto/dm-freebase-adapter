@@ -24,27 +24,26 @@ Below is an example mapping for the /music/artist and the /music/album freebase 
 
   class Artist
     include DataMapper::Resource
-    storage_names[:default] = '/music/artist'
-    
+
+    storage_names[:freebase_repo] = '/music/artist'
+
     property :id, String, :key => true
     property :guid, String
     property :name, String
-    property :genre, String
-  
-    has n, :albums, :child_key => [:artist]
+
+    has n, :albums, :incoming_prop => '/music/artist/album'
   end
 
   class Album
     include DataMapper::Resource
 
-    storage_names[:default] = '/music/album'
+    storage_names[:freebase_repo] = '/music/album'
 
     property :id, String, :key => true
     property :name, String
-    property :track, String
+    property :release_date, Date
 
-    belongs_to :artist, :child_key => [:artist]
+    has 1, :artist, :incoming_prop => '/music/album/artist'
   end
 
-
-Copyright (c) 2009 Yves Senn. See LICENSE for details.
+Copyright (c) 2010 Yves Senn, Yertto. See LICENSE for details.
